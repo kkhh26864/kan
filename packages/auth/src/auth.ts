@@ -128,6 +128,16 @@ export const initAuth = (db: dbClient) => {
       magicLink({
         expiresIn: 60 * 60 * 24 * 7, // 7 days
         sendMagicLink: async ({ email, url }) => {
+          // 开发环境：直接在控制台输出魔法链接
+          if (process.env.NODE_ENV === "development") {
+            console.log("\n=== MAGIC LINK FOR DEVELOPMENT ===");
+            console.log(`Email: ${email}`);
+            console.log(`Magic Link: ${url}`);
+            console.log("=== Copy the above URL to your browser ===\n");
+            return;
+          }
+          
+          // 生产环境：发送真实邮件
           if (url.includes("type=invite")) {
             await sendEmail(
               email,

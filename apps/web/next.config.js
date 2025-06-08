@@ -25,45 +25,28 @@ const config = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 
-  /** Cloudflare Pages支持 - 简单配置 */
-  output: "export",
-  trailingSlash: true,
-  distDir: "out",
+  /** 本地开发配置 - 支持API路由 */
+  output: "export", // 注释掉，仅在部署时使用
+  trailingSlash: false,
 
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: `*.${env("NEXT_PUBLIC_STORAGE_DOMAIN")}`,
+        hostname: "utfs.io",
       },
       {
-        protocol: "http",
-        hostname: "localhost",
+        hostname: "api.dicebear.com",
       },
       {
-        protocol: "https",
-        hostname: "*.googleusercontent.com",
+        hostname: "lh3.googleusercontent.com",
+      },
+      {
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        hostname: "cdn.discordapp.com",
       },
     ],
-    unoptimized: true, // Cloudflare Pages需要
-  },
-  
-  /** 减少构建问题 */
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-    return config;
-  },
-  
-  experimental: {
-    instrumentationHook: true,
-    // 移除 optimizeCss 避免 critters 问题
   },
 };
 
