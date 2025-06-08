@@ -25,7 +25,7 @@ const config = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 
-  /** Cloudflare Pages support - 静态导出避免大文件 */
+  /** Cloudflare Pages支持 - 简单配置 */
   output: "export",
   trailingSlash: true,
   distDir: "out",
@@ -48,7 +48,7 @@ const config = {
     unoptimized: true, // Cloudflare Pages需要
   },
   
-  /** 优化构建，减少文件大小 */
+  /** 减少构建问题 */
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -58,14 +58,12 @@ const config = {
         tls: false,
       };
     }
-    // 减少缓存大小
-    config.cache = false;
     return config;
   },
   
   experimental: {
     instrumentationHook: true,
-    optimizeCss: true,
+    // 移除 optimizeCss 避免 critters 问题
   },
 };
 
