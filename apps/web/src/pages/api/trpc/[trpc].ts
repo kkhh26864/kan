@@ -4,6 +4,9 @@ import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { appRouter } from "@kan/api/root";
 import { createTRPCContext } from "@kan/api/trpc";
 
+// 注意：tRPC可能需要Node.js运行时，暂时移除Edge Runtime
+// export const runtime = 'edge';
+
 const nextApiHandler = createNextApiHandler({
   router: appRouter,
   createContext: createTRPCContext,

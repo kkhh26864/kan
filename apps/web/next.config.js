@@ -25,10 +25,6 @@ const config = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 
-  /** 本地开发配置 - 支持API路由 */
-  output: "export", // 注释掉，仅在部署时使用
-  trailingSlash: false,
-
   images: {
     remotePatterns: [
       {
@@ -47,6 +43,10 @@ const config = {
         hostname: "cdn.discordapp.com",
       },
     ],
+  },
+
+  experimental: {
+    instrumentationHook: true,
   },
 };
 

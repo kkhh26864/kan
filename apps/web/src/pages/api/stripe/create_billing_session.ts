@@ -4,6 +4,9 @@ import { env } from "next-runtime-env";
 import { createNextApiContext } from "@kan/api/trpc";
 import { createStripeClient } from "@kan/stripe";
 
+// 注意：此API路由使用Node.js运行时，不兼容Edge Runtime
+// export const runtime = 'edge';
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,

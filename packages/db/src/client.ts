@@ -17,6 +17,9 @@ export const createDrizzleClient = (): dbClient => {
 
   const pool = new Pool({
     connectionString,
+    connectionTimeoutMillis: 5000,
+    idleTimeoutMillis: 30000,
+    max: 20,
   });
 
   return drizzlePg(pool, { schema }) as dbClient;

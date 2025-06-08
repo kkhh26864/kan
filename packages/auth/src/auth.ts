@@ -99,7 +99,7 @@ async function downloadImage(url: string): Promise<Buffer> {
 export const initAuth = (db: dbClient) => {
   return betterAuth({
     secret: process.env.BETTER_AUTH_SECRET!,
-    baseURL: process.env.BETTER_AUTH_BASE_URL!,
+    baseURL: process.env.BETTER_AUTH_URL!,
     trustedOrigins: process.env.BETTER_AUTH_TRUSTED_ORIGINS
       ? process.env.BETTER_AUTH_TRUSTED_ORIGINS.split(",")
       : [],

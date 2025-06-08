@@ -6,6 +6,9 @@ import { createNextApiContext } from "@kan/api/trpc";
 import * as workspaceRepo from "@kan/db/repository/workspace.repo";
 import { createStripeClient } from "@kan/stripe";
 
+// 注意：此API路由使用Node.js运行时，不兼容Edge Runtime
+// export const runtime = 'edge';
+
 const workspaceSlugSchema = z
   .string()
   .min(3)

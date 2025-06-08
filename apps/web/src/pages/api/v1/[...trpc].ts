@@ -7,6 +7,9 @@ import { createRESTContext } from "@kan/api/trpc";
 
 import { env } from "~/env";
 
+// 注意：此API路由不能使用Edge Runtime，因为trpc-to-openapi不兼容
+// export const runtime = 'edge';
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,

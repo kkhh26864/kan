@@ -7,6 +7,9 @@ import { createNextApiContext } from "@kan/api/trpc";
 
 import { env } from "~/env";
 
+// 注意：此API路由使用Node.js运行时，不兼容Edge Runtime
+// export const runtime = 'edge';
+
 const allowedContentTypes = ["image/jpeg", "image/png"];
 
 export default async function handler(
