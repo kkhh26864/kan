@@ -1,0 +1,13 @@
+# Cloudflare Pages ignore
+.next/cache/
+.next/standalone/
+node_modules/
+.cache/
+.turbo/
+*.log
+.env*
+.git/
+cache/
+
+# 排除所有超过25MB的文件
+*.pack 

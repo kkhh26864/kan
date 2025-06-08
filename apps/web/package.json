@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm next build",
-    "clean": "git clean -xdf .cache .next .turbo node_modules",
+    "build": "rm -rf .next out .turbo && pnpm next build",
+    "build:cf": "rm -rf .next out .turbo cache && pnpm next build",
+    "clean": "git clean -xdf .cache .next .turbo node_modules out",
     "dev": "pnpm with-env next dev | pino-pretty",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
