@@ -25,6 +25,10 @@ const config = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 
+  /** Cloudflare Pages support */
+  output: "standalone",
+  trailingSlash: true,
+
   images: {
     remotePatterns: [
       {
@@ -40,6 +44,7 @@ const config = {
         hostname: "*.googleusercontent.com",
       },
     ],
+    unoptimized: true, // Cloudflare Pages需要
   },
   experimental: {
     instrumentationHook: true,
